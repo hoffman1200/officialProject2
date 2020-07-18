@@ -1,0 +1,115 @@
+body {
+  background-image: url("../assets/background.png");
+  width: 100%;
+  font-family: 'Quicksand', sans-serif;
+}
+.category-buttons {
+width: 400px;
+border: none;
+margin:0 auto;
+}
+img {
+width: 50%;
+}
+.category-title {
+color:#d7fbf6;
+text-align: center;
+font-weight: bold;
+}
+tr {
+border-style: hidden;
+}
+form {
+width: 400px;
+float:left;
+}
+label {
+color: #E40475;
+font-weight: bold;
+}
+.form-control {
+background-color: #D7FBF6;
+color:#0e0220;
+}
+.btn-primary {
+background-color: #E40475;
+color:#d7fbf6;
+border: none;
+}
+.btn-primary:hover {
+background-color: #48E0E4;
+color:#0e0220;
+border: none;
+}
+.nav-item {
+color: #48E0E4!important;
+font-weight: bold;
+text-align: left;
+}
+.nav-item:hover {
+color: #D7FBF6!important;
+}
+.navbar-nav{
+margin-left:1000px;
+}
+.activity-info{
+margin:0 auto;
+}
+.navbar {
+margin-bottom: 125px;
+}
+.add-details{
+color:#d7fbf6;
+font-weight: bold;
+}
+.img1:hover{
+  content: url("../assets/button-theatre-hover.png");
+}
+.img2:hover{
+  content: url("../assets/button-travel-hover.png");
+}
+.img3:hover{
+  content: url("../assets/button-outdoors-hover.png");
+}
+.img4:hover{
+  content: url("../assets/button-movies-hover.png");
+}
+.img5:hover{
+  content: url("../assets/button-bar-hover.png");
+}
+.img6:hover{
+  content: url("../assets/button-concerts-hover.png");
+}
+.img7:hover{
+  content: url("../assets/button-train-hover.png");
+}
+#detailsCol {
+  display: none;
+}
+
+/*Styling for bucketlist html*/
+h1{
+  color: #48e0e4;
+  font-weight: bold;
+  font-size: 18px;
+}
+h2{
+ color: #e40475;
+ font-size: 18px;
+}
+h3{
+ color: #48e0e4;
+ font-size: 18px;
+}
+.toDo{
+ background-color: #d7fbf6;
+ max-width: 3000px;
+ font-size: 16px;
+}
+p{
+  vertical-align: middle;
+}
+.bucketlistImg{
+  width: 15%
+}
+

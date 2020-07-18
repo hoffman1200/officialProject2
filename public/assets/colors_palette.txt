@@ -1,0 +1,5 @@
+Fondo: #0e0220
+Turquesa clarito: #d7fbf6
+Turquesa fuerte: #48e0e4
+Rosa: #e40475
+

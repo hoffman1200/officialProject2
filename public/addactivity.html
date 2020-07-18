@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quarantine Bucket List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js" integrity="sha512-mh+AjlD3nxImTUGisMpHXW03gE6F4WdQyvuFRkjecwuWLwD2yCijw4tKA3NsEFpA1C3neiKhGXPSIGSfCYPMlQ==" crossorigin="anonymous"></script>
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/activity">HOME</a>
+          <a class="nav-item nav-link" href="/bucketlist">BUCKETLIST</a>
+          <a class="nav-item nav-link" href="/logout">LOG OUT</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <p class="category-title">Book Activity</p>
+          <table class="table category-buttons">
+            <tbody>
+              <tr>
+                <td><a href="#" class="activity-button" data-catego="Theatre"><img class="img1" src="assets/button-theatre.png"></a></td>
+                <td><a href="#" class="activity-button" data-catego="Travel"><img class="img2" src="assets/button-travel.png"></a></td>
+                <td><a href="#" class="activity-button" data-catego="Outdoors"><img class="img3" src="assets/button-outdoors.png"></a></td>
+              </tr>
+              <tr>
+                <td><a href="#" class="activity-button" data-catego="Movies"><img class="img4" src="assets/button-movies.png"></a></td>
+                <td><a href="#" class="activity-button" data-catego="Bar"><img class="img5" src="assets/button-bar.png"></a></td>
+                <td><a href="#" class="activity-button" data-catego="Concerts"><img class="img6" src="assets/button-concerts.png"></a></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><a href="#" class="activity-button" data-catego="Train"><img class="img7" src="assets/button-train.png"></a></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col" id="detailsCol">
+          <p class="add-details">Add some Details</p>
+          <form class="activity-info" action="" method="POST">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Category</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Title</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Description</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Date</label>
+              <input type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Adress</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <!-- Autocomplete location search input --> 
+<div class="form-group">
+  <label>Location:</label>
+  <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
+  <input type="hidden" id="loc_lat" />
+  <input type="hidden" id="loc_long" />
+</div>
+<!-- Display latitude and longitude -->
+<div class="latlong-view">
+  <p><b>Latitude:</b> <span id="latitude_view"></span></p>
+  <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+</div>
+            <button type="submit" class="btn btn-primary">Add Activity</button>
+          </form>
+        </div>
+      </div>
+    </div>
+<!-- Search input -->
+<!-- <input id="searchInput" class="controls" type="text" placeholder="Enter a location"> -->
+<!-- Google map -->
+<!-- <div id="map"></div> -->
+<!-- Display geolocation data -->
+<!-- <ul class="geo-data">
+    <li>Full Address: <span id="location"></span></li>
+    <li>Postal Code: <span id="postal_code"></span></li>
+    <li>Country: <span id="country"></span></li>
+    <li>Latitude: <span id="lat"></span></li>
+    <li>Longitude: <span id="lon"></span></li>
+</ul> -->
+<script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13
+        });
+        var input = document.getElementById('searchInput');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map,
+            anchorPoint: new google.maps.Point(0, -29)
+        });
+        autocomplete.addListener('place_changed', function() {
+            infowindow.close();
+            marker.setVisible(false);
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return;
+            }
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);
+            }
+            marker.setIcon(({
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(35, 35)
+            }));
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+            var address = '';
+            if (place.address_components) {
+                address = [
+                  (place.address_components[0] && place.address_components[0].short_name || ''),
+                  (place.address_components[1] && place.address_components[1].short_name || ''),
+                  (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+            // Location details
+            for (var i = 0; i < place.address_components.length; i++) {
+                if(place.address_components[i].types[0] == 'postal_code'){
+                    document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
+                }
+                if(place.address_components[i].types[0] == 'country'){
+                    document.getElementById('country').innerHTML = place.address_components[i].long_name;
+                }
+            }
+            document.getElementById('location').innerHTML = place.formatted_address;
+            document.getElementById('lat').innerHTML = place.geometry.location.lat();
+            document.getElementById('lon').innerHTML = place.geometry.location.lng();
+        });
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDglzJzsnj5NQWSuQCS7ITI9lDjTg3tWCs"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDglzJzsnj5NQWSuQCS7ITI9lDjTg3tWCs&callback=initMap" async defer></script> -->
+<script src="./js/addactivity.js"></script>
+<script src="./js/add.js"></script>
+</body>
+</html>
