@@ -31,7 +31,10 @@ module.exports = function(app) {
     app.post("/api/posts", function(req, res) {
         db.Post.create(req.body).then(function(data) {
             console.log('New Post Created: ', data)
-            res.json(data);
+
+             res.json(data);
+            
+
         });
     });
 
