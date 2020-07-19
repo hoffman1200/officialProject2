@@ -35,10 +35,10 @@ $(document).ready(()=>{
         
     });
 function postActivity(newActivity) {
-    console
     var queryUrl = "/api/posts";
     $.post(queryUrl, newActivity, function(data){
         console.log("New post data: ", data);
+        window.location.href = "/bucketlist"
     })
 }
 
