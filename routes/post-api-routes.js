@@ -6,7 +6,7 @@ module.exports = function(app) {
     //Route for getting all the posts
     app.get("/api/posts", function(req, res) {
         db.Post.findAll({}).then(function(data) {
-            console.log('All Posts: ', data);
+            // console.log('All Posts: ', data);
             res.json(data);
         });
     });

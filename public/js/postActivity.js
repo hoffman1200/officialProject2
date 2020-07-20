@@ -10,14 +10,14 @@ $(document).ready(()=>{
         var lat = $("#latitude_view").text().trim();
         var lon = $("#longitude_view").text().trim();
 
-        console.log(category);
-        console.log(title);
-        console.log(description);
-        console.log(date);
-        console.log(search);
-        console.log(address);
-        console.log(lat);
-        console.log(lon);
+        // console.log(category);
+        // console.log(title);
+        // console.log(description);
+        // console.log(date);
+        // console.log(search);
+        // console.log(address);
+        // console.log(lat);
+        // console.log(lon);
 
         var newActivity = {
             category: category,
@@ -30,10 +30,11 @@ $(document).ready(()=>{
             longitude: lon
         }
 
-        console.log(newActivity);
+        // console.log(newActivity);
         postActivity(newActivity);
         
     });
+
 function postActivity(newActivity) {
     var queryUrl = "/api/posts";
     $.post(queryUrl, newActivity, function(data){
@@ -41,6 +42,5 @@ function postActivity(newActivity) {
         window.location.href = "/bucketlist"
     })
 }
-
 
 })

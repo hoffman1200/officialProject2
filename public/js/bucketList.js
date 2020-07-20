@@ -1,32 +1,52 @@
 $(document).ready(() => {
-    // Getting references to our form and inputs
-    const activityInfo = $(".activityInfo");
-    const titleInfo = $(".titleInfo");
-    const descriptionInfo = $(".descriptionInfo");
-    const dateInfo = $(".dateInfo");
-    const hourInfo = $(".hourInfo");
-    const addressInfo = $(".addressInfo");
-    const toDo = $(".toDo")
-//Event Listener when the button is clicked//
-    $(activityInfo).on("submit", getActivityData);
-    var url = window.location.search;
-    var activityId;
-    var categoryId;
-    var updating = false;
-    if(url.indexOf("?activity_id=") !== -1){
-        activityId = url.split("=")[1];
-        getActivityData(activityId);
-        console.log("id found");
-    }
-    else {
-        console.log("id not found");
-    }
-function getActivityData(id){
-    var queryUrl = "/api/activity/" + id;
+    var allAct = $("#allActivities");
+    getActivityData();
+    
+function getActivityData(){
+    var queryUrl = "/api/posts/";
     $.get(queryUrl, function(data){
         if(data){
-        console.log(data)
+        // console.log(data)
+        data.map(i => {
+
+            var html = `          
+            <button type="button" class="cardtoDo" data-lat="${i.latitude}" data-lon="${i.longitude}">
+            <p class="align-middle">
+              <p>Category: ${i.category}</p>
+              <p>Title: ${i.title}</p>
+              <p>Description: ${i.description}</p>
+              <p>Date: ${i.date}</p>
+              <p>Place: ${i.searched_place}</p>
+              <p>Address: ${i.address}</p>
+              <p>Created At: ${i.createdAt}</p>
+              <img src="assets/concerts.png" class="img-fluid float-right bucketlistImg" alt="Responsive image"/>
+            </p>
+            </button>
+            <br />`
+            allAct.prepend(html);
+
+        })
         }
     })
 };
+// Initialize and add the map
+function initMap(lat, lon) {
+    // The location
+    var uluru = {lat: lat, lng: lon};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 20, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+
+  };
+  
+$('body').on('click', '.cardtoDo', function (event) {
+    event.preventDefault();
+    var lat = $(this).data("lat");
+    var lon = $(this).data("lon");
+    initMap(lat, lon);
+  });
+
 });
+
