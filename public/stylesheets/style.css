@@ -83,6 +83,13 @@ font-weight: bold;
 .img7:hover{
   content: url("../assets/button-train-hover.png");
 }
+.img8:hover{
+  content: url("../assets/button-museum-hover.png");
+}
+.img9:hover{
+  content: url("../assets/button-others-hover.png");
+}
+
 #detailsCol {
   display: none;
 }
@@ -117,4 +124,11 @@ p{
   height: 400px;  /* The height is 400 pixels */
   width: 100%;  /* The width is the width of the web page */
  }
+
+ /*Sign Up Form Styles*/
+
+.signup-title{
+  font-weight: bold;
+  text-align: center;
+}
 
