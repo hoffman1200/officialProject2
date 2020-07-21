@@ -20,8 +20,9 @@ function getActivityData(){
               <p>Address: ${i.address}</p>
               <p>Created At: ${i.createdAt}</p>
               <img src="assets/concerts.png" class="img-fluid float-right bucketlistImg" alt="Responsive image"/>
-            </p>
-            </button>
+              </p>
+              </button>
+              <button type="button" class="btn btn-dark deleteBtn" data-id="${i.id}">Delete</button>
             <br />`
             allAct.prepend(html);
 
@@ -47,6 +48,17 @@ $('body').on('click', '.cardtoDo', function (event) {
     var lon = $(this).data("lon");
     initMap(lat, lon);
   });
+
+  $('body').on('click', '.deleteBtn', function (event) {
+    event.preventDefault();
+    var id = $(this).data("id");
+    $.ajax("/api/posts/" + id, {
+      type: "DELETE"
+    }).then(function() {
+      console.log("Activity Deleted");
+      location.reload();
+    })
+  })
 
 });
 
