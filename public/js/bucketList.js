@@ -1,33 +1,55 @@
 $(document).ready(() => {
     var allAct = $("#allActivities");
-    getActivityData();
+    getActivityTitles();
     
-function getActivityData(){
+function getActivityTitles(){
     var queryUrl = "/api/posts/";
     $.get(queryUrl, function(data){
         if(data){
         // console.log(data)
         data.map(i => {
 
-            var html = `          
-            <button type="button" class="cardtoDo" data-lat="${i.latitude}" data-lon="${i.longitude}">
-            <p class="align-middle">
-              <p>Category: ${i.category}</p>
-              <p>Title: ${i.title}</p>
-              <p>Description: ${i.description}</p>
-              <p>Date: ${i.date}</p>
-              <p>Place: ${i.searched_place}</p>
-              <p>Address: ${i.address}</p>
-              <p>Created At: ${i.createdAt}</p>
-              <img src="assets/concerts.png" class="img-fluid float-right bucketlistImg" alt="Responsive image"/>
-            </p>
-            </button>
-            <br />`
+            var html = `
+            <div class="col-lg-5 col-sm-12 activityInfo">
+            <button class="card toDo">
+              <p class="activities-title">${i.title}</p></button>
+            </div>
+            `
             allAct.prepend(html);
 
         })
         }
     })
+};
+
+$('body').on('click', '.activities-title', function (event) {
+  event.preventDefault();
+  getActivityData();
+});
+
+function getActivityData(){
+  var queryUrl = "/api/posts/";
+  $.get(queryUrl, function(data){
+      if(data){
+      // console.log(data)
+      data.map(i => {
+
+          var html = `
+          <div class="col-lg-5 col-sm-12 activityInfo">
+            <p class="details-catego"> Category: ${i.category}</p>
+            <p class="details-title">${i.title}</p>
+            <p class="description">${i.description}</p>
+            <p class="dateInfo">${i.date}</p>
+            <p class="place">${i.searched_place}</p>
+            <p class="createdAt">Created At: ${i.createdAt}</p>
+            <button type="submit" class="btn btn-primary view-map" data-lat="${i.latitude}" data-lon="${i.longitude}">View Map</button>
+          </div>
+          `
+          allAct.prepend(html);
+
+      })
+      }
+  })
 };
 // Initialize and add the map
 function initMap(lat, lon) {
@@ -41,7 +63,7 @@ function initMap(lat, lon) {
 
   };
   
-$('body').on('click', '.cardtoDo', function (event) {
+$('body').on('click', '.view-map', function (event) {
     event.preventDefault();
     var lat = $(this).data("lat");
     var lon = $(this).data("lon");

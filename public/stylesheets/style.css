@@ -3,6 +3,11 @@ body {
   width: 100%;
   font-family: 'Quicksand', sans-serif;
 }
+
+.logo {
+  margin:0 0 50px 550px;
+  width:250px;
+}
 .category-buttons {
 width: 400px;
 border: none;
@@ -129,6 +134,73 @@ p{
 
 .signup-title{
   font-weight: bold;
-  text-align: center;
+  margin-left: 130px;
+  margin-bottom:30px;
+  color: #48E0E4;
 }
 
+.email {
+  color: #d7fbf6;
+}
+
+.pwd {
+  color: #d7fbf6;
+}
+
+.login-2 {
+  color: #E40475;
+  margin-left: 140px;
+}
+
+.submit {
+  margin: 20px 0 10px 150px;
+}
+
+/*Bucket List Styles*/
+
+.details{
+ color: #e40475;
+ font-weight: bold;
+}
+.details-catego{
+  color: #d7fbf6;
+  font-weight: bold;
+}
+
+.details-title{
+  color: #48E0E4;
+  font-weight: bold;
+}
+
+.description{
+  color: #48E0E4;
+}
+
+.dateInfo {
+  color: #E40475;
+  font-weight: bolder;
+}
+
+.place {
+  color: #d7fbf6;
+}
+
+.createdAt {
+  color: #E40475;
+}
+
+
+
+
+.toDo{
+ background-color: #d7fbf6;
+ width: 400px;
+ margin-bottom:20px;
+ font-size: 16px;
+}
+.infoCard{
+  vertical-align: middle;
+}
+.bucketlistImg{
+  width: 15%
+}
