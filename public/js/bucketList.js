@@ -11,7 +11,7 @@ function getActivityTitles(){
 
             var html = `
             <div class="col-lg-5 col-sm-12 activityInfo">
-            <button class="card toDo">
+            <button class="card toDo" data-id="${i.id}">
               <p class="activities-title">${i.title}</p></button>
             </div>
             `
@@ -25,6 +25,8 @@ function getActivityTitles(){
 $('body').on('click', '.activities-title', function (event) {
   event.preventDefault();
   getActivityData();
+  var id = $(this).data("id");
+  console.log(id);
 });
 
 function getActivityData(){
@@ -43,6 +45,7 @@ function getActivityData(){
             <p class="place">${i.searched_place}</p>
             <p class="createdAt">Created At: ${i.createdAt}</p>
             <button type="submit" class="btn btn-primary view-map" data-lat="${i.latitude}" data-lon="${i.longitude}">View Map</button>
+            <button type="button" class="btn btn-primary deleteBtn" data-id="${i.id}">Delete</button>
           </div>
           `
           allAct.prepend(html);
@@ -63,12 +66,23 @@ function initMap(lat, lon) {
 
   };
   
-$('body').on('click', '.view-map', function (event) {
+  $('body').on('click', '.view-map', function (event) {
     event.preventDefault();
     var lat = $(this).data("lat");
     var lon = $(this).data("lon");
     initMap(lat, lon);
   });
+
+  $('body').on('click', '.deleteBtn', function (event) {
+    event.preventDefault();
+    var id = $(this).data("id");
+    $.ajax("/api/posts/" + id, {
+      type: "DELETE"
+    }).then(function() {
+      console.log("Activity Deleted");
+      location.reload();
+    })
+  })
 
 });
 

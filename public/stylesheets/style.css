@@ -5,9 +5,33 @@ body {
 }
 
 .logo {
-  margin:0 0 50px 550px;
-  width:250px;
+  width:350px;
+  margin-left: 21px;
+  margin-bottom:60px;
 }
+
+/*Navbar Styles*/
+.nav-item {
+  color: #48E0E4!important;
+  font-weight: bold;
+  text-align: left;
+  }
+  .nav-item:hover {
+  color: #D7FBF6!important;
+  }
+  .navbar-nav{
+  margin-left:1000px;
+  }
+  
+  .navbar-toggler{
+    color:#48e0e4!important;
+  }
+  
+  .navbar {
+    margin-bottom: 80px;
+  }
+
+/*Book an activity styles*/
 .category-buttons {
 width: 400px;
 border: none;
@@ -24,18 +48,8 @@ font-weight: bold;
 tr {
 border-style: hidden;
 }
-form {
-width: 400px;
-float:left;
-}
-label {
-color: #E40475;
-font-weight: bold;
-}
-.form-control {
-background-color: #D7FBF6;
-color:#0e0220;
-}
+
+
 .btn-primary {
 background-color: #E40475;
 color:#d7fbf6;
@@ -46,23 +60,12 @@ background-color: #48E0E4;
 color:#0e0220;
 border: none;
 }
-.nav-item {
-color: #48E0E4!important;
-font-weight: bold;
-text-align: left;
-}
-.nav-item:hover {
-color: #D7FBF6!important;
-}
-.navbar-nav{
-margin-left:1000px;
-}
+
+
 .activity-info{
 margin:0 auto;
 }
-.navbar {
-margin-bottom: 125px;
-}
+
 .add-details{
 color:#d7fbf6;
 font-weight: bold;
@@ -132,9 +135,24 @@ p{
 
  /*Sign Up Form Styles*/
 
+form {
+  width: 450px;
+  float:left;
+}
+
+label {
+  color: #E40475;
+  font-weight: bold;
+}
+
+.form-control {
+  background-color: #D7FBF6;
+  color:#0e0220;
+}
+
 .signup-title{
   font-weight: bold;
-  margin-left: 130px;
+  margin-left: 162px;
   margin-bottom:30px;
   color: #48E0E4;
 }
@@ -149,11 +167,11 @@ p{
 
 .login-2 {
   color: #E40475;
-  margin-left: 140px;
+  margin-left: 162px;
 }
 
 .submit {
-  margin: 20px 0 10px 150px;
+  margin: 20px 0 10px 182px;
 }
 
 /*Bucket List Styles*/
