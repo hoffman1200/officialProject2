@@ -7,6 +7,10 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+require('dotenv').config()
+config.password = process.env.PASSWORD
+config.username = process.env.USERNAME
+config.host = process.env.HOST
 
 let sequelize;
 if (config.use_env_variable) {

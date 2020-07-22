@@ -1,4 +1,6 @@
 $(document).ready(() => {
+  // require('dotenv').config()
+  
     var allAct = $("#allActivities");
     getActivityData();
     
@@ -40,7 +42,7 @@ function initMap(lat, lon) {
     // The marker, positioned at Uluru
     var marker = new google.maps.Marker({position: uluru, map: map});
 
-  };
+  };  
   
 $('body').on('click', '.cardtoDo', function (event) {
     event.preventDefault();
