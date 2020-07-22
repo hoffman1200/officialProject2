@@ -9,12 +9,13 @@ $(document).ready(() => {
         // console.log(data)
         data.map(i => {
 
+
             var html = `
             <div class="col-lg-5 col-sm-12 activityInfo">
             <button class="card toDo" data-id="${i.id}">
               <p class="activities-title">${i.title}</p></button>
             </div>
-            ` 
+
             allAct.prepend(html);
 
         })
