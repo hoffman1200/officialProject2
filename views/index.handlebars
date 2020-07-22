@@ -1,26 +1,63 @@
-  <nav class="navbar navbar-default">
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/activity">ADD</a>
+          <a class="nav-item nav-link" href="/bucketlist">BUCKETLIST</a>
+          <a class="nav-item nav-link" href="/logout">LOG OUT</a>
+        </div>
+      </div>
+    </nav>
+
+    <img class="logo" src="assets/quarantines-logo.png">
     <div class="container-fluid">
-      <div class="navbar-header">
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <h1>Bucket List</h1>
+        <div class="col-lg-5 col-sm-12" id="allActivities">
+          <!-- Activities goes here -->
+           <div class="col-lg-5 col-sm-12 activityInfo">
+            {{#each data}}
+            <button class="card toDo" data-id={{this.dataValues.id}}>
+              <p class="activities-title">{{this.dataValues.title}}</p>
+            </button> 
+            {{/each}}
+           </div>
+        </div>
+          {{#each data}}
+          <div class="col-lg-5 col-sm-12 activityDetails" data-ide={{this.dataValues.id}}>
+            <p class="details-catego"> Category: {{this.dataValues.category}}</p>
+            <p class="details-title">{{this.dataValues.title}}</p>
+            <p class="description">{{this.dataValues.description}}</p>
+            <p class="dateInfo">{{this.dataValues.date}}</p>
+            <p class="place">{{this.dataValues.searched_place}}</p>
+            <p class="createdAt">Created At: {{this.dataValues.createdAt}}</p>
+            <button type="submit" class="btn btn-primary view-map" data-lat={{this.dataValues.latitude}} data-lon={{this.dataValues.longitude}}>View Map</button>
+            <button type="button" class="btn btn-primary deleteBtn" data-id={{this.dataValues.id}}>Delete</button>
+          </div>
+          {{/each}}
+          <h3>Google Maps</h3>
+          <!--The div element for the map -->
+          <div id="map"></div>
+
+        </div>
+        <div class="col-lg-1"></div>
       </div>
     </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h2>Login Form</h2>
-        <form class="login">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-default">Login</button>
-        </form>
-        <br />
-        <p>Or sign up <a href="/">here</a></p>
-      </div>
-    </div>
-  </div>
+
+    <!-- <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        var uluru = {lat: -25.344, lng: 131.036};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 10, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+      }
+          </script> -->
+   
