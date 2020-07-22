@@ -9,25 +9,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js" integrity="sha512-mh+AjlD3nxImTUGisMpHXW03gE6F4WdQyvuFRkjecwuWLwD2yCijw4tKA3NsEFpA1C3neiKhGXPSIGSfCYPMlQ==" crossorigin="anonymous"></script>
     <link href="stylesheets/style.css" rel="stylesheet">
 </head>
+
 <body>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/activity">HOME</a>
+          <a class="nav-item nav-link" href="/activity">ADD</a>
           <a class="nav-item nav-link" href="/bucketlist">BUCKETLIST</a>
           <a class="nav-item nav-link" href="/logout">LOG OUT</a>
         </div>
       </div>
     </nav>
+
+    <!-- Main Container -->
     <div class="container-fluid">
       <div class="row">
-        <div class="col">
-          <p class="category-title">Book Activity</p>
+
+        <div class="col-md-6 col-md-offset-3">
+          <img class="logo" src="assets/quarantines-logo.png">
           <table class="table category-buttons">
             <tbody>
+              <tr>
+                <p class="category-title">Book Activity</p>
+              </tr>
               <tr>
                 <td><a href="#" class="activity-button" data-catego="Theatre"><img class="img1" src="assets/button-theatre.png"></a></td>
                 <td><a href="#" class="activity-button" data-catego="Travel"><img class="img2" src="assets/button-travel.png"></a></td>
@@ -46,49 +55,60 @@
             </tbody>
           </table>
         </div>
-        <div class="col" id="detailsCol">
-          <p class="add-details">Add some Details</p>
-          <form class="activity-info">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Category</label>
-              <input type="text" class="form-control" id="category">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Title</label>
-              <input type="text" class="form-control" id="title">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Description</label>
-              <textarea class="form-control" id="description" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Date</label>
-              <input type="text" class="form-control" id="date">
-            </div>
-<!-- Autocomplete location search input --> 
-            <div class="form-group">
-              <label>Location:</label>
-              <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
-              <input type="hidden" id="loc_lat" />
-              <input type="hidden" id="loc_long" />
-            </div>
-<!-- Display address, latitude and longitude -->
-            <div class="latlong-view">
-              <p><b>Complete Address:</b> <span id="address_view"></span></p>
-              <p><b>Latitude:</b> <span id="latitude_view"></span></p>
-              <p><b>Longitude:</b> <span id="longitude_view"></span></p>
-            </div>
-            <button type="submit" class="btn btn-primary" id="submitBtn">Add Activity</button>
-          </form>
+
+          <!-- Book Activity Container -->
+          <div class="col" id="detailsCol">
+            <p class="add-details">Add some Details</p>
+            <form class="activity-info">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Category</label>
+                <input type="text" class="form-control" id="category">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" class="form-control" id="title">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Date</label>
+                <input type="text" class="form-control" id="date">
+              </div>
+  
+              <!-- Autocomplete location search input --> 
+              <div class="form-group">
+                <label>Location:</label>
+                <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
+                <input type="hidden" id="loc_lat" />
+                <input type="hidden" id="loc_long" />
+              </div>
+
+              <!-- Display address, latitude and longitude -->
+              <div class="latlong-view">
+                <p><b>Complete Address:</b> <span id="address_view"></span></p>
+                <p><b>Latitude:</b> <span id="latitude_view"></span></p>
+                <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+              </div>
+              <button type="submit" class="btn btn-primary" id="submitBtn">Add Activity</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDglzJzsnj5NQWSuQCS7ITI9lDjTg3tWCs"></script>
-<script src="./js/addactivity.js"></script>
-<script src="./js/postActivity.js"></script>
+      </div>
+    </div>
+      
+
+
+<!-- Autocomplete location search input -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDglzJzsnj5NQWSuQCS7ITI9lDjTg3tWCs"></script>
+  <script src="./js/addactivity.js"></script>
+  <script src="./js/postActivity.js"></script>
+
 </body>
 </html>
