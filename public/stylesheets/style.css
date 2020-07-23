@@ -6,7 +6,6 @@ body {
 
 .logo {
   width:350px;
-  margin-left: 21px;
   margin-bottom:60px;
 }
 
@@ -99,7 +98,7 @@ font-weight: bold;
 }
 
 #detailsCol {
-  display: none;
+  margin-bottom:50px;
 }
 
 /*Styling for bucketlist html*/

@@ -31,6 +31,7 @@ $(document).ready(()=>{
         document.getElementById('address_view').innerHTML = near_place.formatted_address;
     });
 
+    $(".latlong-view").hide();
 
     
 });
