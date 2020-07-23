@@ -62,8 +62,8 @@ border: none;
 }
 
 
-.activity-info{
-margin:0 auto;
+.activityDetails{
+  display:none;
 }
 
 .add-details{
