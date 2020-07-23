@@ -1,8 +1,8 @@
 $(document).ready(() => {
     var allAct = $("#allActivities");
-    getActivityTitles();
+    //getActivityTitles();
     
-function getActivityTitles(){
+/*function getActivityTitles(){
     var queryUrl = "/api/posts/";
     $.get(queryUrl, function(data){
         if(data){
@@ -15,23 +15,38 @@ function getActivityTitles(){
             <button class="card toDo" data-id="${i.id}">
               <p class="activities-title">${i.title}</p></button>
             </div>
-            `
 
             allAct.prepend(html);
 
         })
         }
     })
-};
+};*/
 
-$('body').on('click', '.activities-title', function (event) {
+$('.toDo').on('click', function (event) {
   event.preventDefault();
-  getActivityData();
   var id = $(this).data("id");
+  var activityDiv = $('.activityDetails');
   console.log(id);
+  activityDiv.each(function(i, ac) {
+    if(this.attributes["data-ide"].value == id){
+      $(this).css('display', 'block');
+      console.log("hola")
+    }
+    else {
+      $(this).css('display', 'none');
+    }
+    console.log(this.attributes["data-ide"].value, id)
+
+  })
+  /*if(activityDiv.data(id) === id) {
+    
+  }*/
+  //getActivityData();
+
 });
 
-function getActivityData(){
+/*function getActivityData(){
   var queryUrl = "/api/posts/";
   $.get(queryUrl, function(data){
       if(data){
@@ -55,7 +70,7 @@ function getActivityData(){
       })
       }
   })
-};
+};*/
 // Initialize and add the map
 function initMap(lat, lon) {
     // The location
