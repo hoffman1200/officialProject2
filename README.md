@@ -39,6 +39,10 @@ We wanted to create something fun to share with our friends so everyone could st
 
 https://quarentinesover.herokuapp.com/
 
+## Original pitch deck
+
+https://drive.google.com/file/d/1koz0_Ee4ZzCT1s9x9-Anw6Z85wCgknT1/view?usp=sharing
+
 ## Future development
 
 Short term
